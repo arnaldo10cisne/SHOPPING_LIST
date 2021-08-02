@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopping List | Arnaldo Cisneros</title>
+    <!-- STYLE SHEETS -->
+    <link rel="stylesheet" href="../css/landing.css">
+    <!-- FONT IMPORTS -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Staatliches&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- HEADER SECTION -->
+    <header class="header">
+        <h1 class="title">Welcome to the Shopping List App!</h1>
+    </header>
+
+    <!-- MAIN SECTION -->
+    <main class="main">
+        <!-- 'ADD A PRODUCT' SECTION -->
+        <section class="add_product">
+            <label class="add_product__label" for="itemName">Name of the item:</label>
+            <input class="add_product__input" type="text" id="itemName">
+            <label class="add_product__label" for="itemPrice">Price of the item:</label>
+            <input class="add_product__input" type="text" id="itemPrice">
+            <label class="add_product__label" for="itemQuantity">Quantity of items:</label>
+            <input class="add_product__input" type="number" id="itemQuantity">
+            <input id="btnAddProduct" class="button" type="button" value="Add to the list">
+        </section>
+        
+        <!-- 'ACTIONS' SECTION -->
+        <section class="actions">
+            <input class="button actions__print" type="button" value="Print list">
+            <input id="btnEmptyList" class="button actions__delete" type="button" value="Empty list">
+            <input  class="button actions__delete" type="button" value="Change currency">
+        </section>
+
+        <!-- 'LIST' SECTION -->
+        <section id="listOfItems" class="product_list">
+            
+            <div class="item_container">
+                <ul class="item_description">
+                    <li class="item_description__li">Name</li>
+                    <li class="item_description__li">Unit price</li>
+                    <li class="item_description__li">Quantity</li>
+                    <li class="item_description__li">Total</li>
+                </ul>
+                <input class="button button--small button--modify_item" type="button" value="Modify item">
+                <input class="button button--small button--erase_item" type="button" value="Erase item">
+            </div>
+        
+        </section>
+    </main>
+
+    <!-- FOOTER SECTION -->
+    <footer class="footer">
+        <div class="social_media">
+            <p><a class="social_media__link" href="https://www.instagram.com/arnaldo10cisne/" target="_blank" rel="noopener noreferrer">Intagram</a> | <a class="social_media__link" href="https://github.com/arnaldo10cisne" target="_blank" rel="noopener noreferrer">Github</a> | <a class="social_media__link" href="https://www.linkedin.com/in/arnaldo10cisne/" target="_blank" rel="noopener noreferrer">Linkedin</a> | <a class="social_media__link" href="https://arnaldo10cisne.github.io/" target="_blank" rel="noopener noreferrer">Website</a></p>
+        </div>
+        <div  class="copyright">
+            <div class="copyright__line-1">
+                <span>&nbsp;©</span>
+                <span>&nbsp;COPYRIGHT 2021,&nbsp;</span>
+            </div>
+            <span class="copyright__line-2">&nbsp;ARNALDO CISNEROS&nbsp;</span>
+        </div>
+    </footer>
+
+    <script src="../js/script.js"></script>
+</body>
+</html>
