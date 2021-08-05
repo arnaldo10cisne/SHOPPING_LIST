@@ -12,11 +12,13 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Staatliches&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap" rel="stylesheet">
 </head>
 <body>
     <!-- HEADER SECTION -->
     <header class="header">
-        <h1 class="title">Welcome to the Shopping List App!</h1>
+        <h1 class="title">Shop listing app</h1>
+        <p class="app_description">Add new products usign the form below. You can edit and remove them later.<br>Change the currency of the pricing, and print the list when you're done to take it with you.</p>
     </header>
 
     <!-- MAIN SECTION -->
@@ -27,31 +29,20 @@
             <input class="add_product__input" type="text" id="itemName">
             <label class="add_product__label" for="itemPrice">Price of the item:</label>
             <input class="add_product__input" type="text" id="itemPrice">
-            <label class="add_product__label" for="itemQuantity">Quantity of items:</label>
+            <label class="add_product__label" for="itemQuantity">Number of items:</label>
             <input class="add_product__input" type="number" id="itemQuantity">
-            <input id="btnAddProduct" class="button" type="button" value="Add to the list">
+            <input id="btnAddProduct" class="button button--add_product" type="button" value="Add item">
         </section>
         
         <!-- 'ACTIONS' SECTION -->
         <section class="actions">
-            <input class="button actions__print" type="button" value="Print list">
-            <input id="btnEmptyList" class="button actions__delete" type="button" value="Empty list">
+            <input class="button actions__print" type="button" value="Print">
+            <input id="btnEmptyList" class="button actions__delete" type="button" value="Reset">
             <input  class="button actions__delete" type="button" value="Change currency">
         </section>
 
         <!-- 'LIST' SECTION -->
         <section id="listOfItems" class="product_list">
-            
-            <div class="item_container">
-                <ul class="item_description">
-                    <li class="item_description__li">Name</li>
-                    <li class="item_description__li">Unit price</li>
-                    <li class="item_description__li">Quantity</li>
-                    <li class="item_description__li">Total</li>
-                </ul>
-                <input class="button button--small button--modify_item" type="button" value="Modify item">
-                <input class="button button--small button--erase_item" type="button" value="Erase item">
-            </div>
         
         </section>
     </main>
@@ -59,7 +50,7 @@
     <!-- FOOTER SECTION -->
     <footer class="footer">
         <div class="social_media">
-            <p><a class="social_media__link" href="https://www.instagram.com/arnaldo10cisne/" target="_blank" rel="noopener noreferrer">Intagram</a> | <a class="social_media__link" href="https://github.com/arnaldo10cisne" target="_blank" rel="noopener noreferrer">Github</a> | <a class="social_media__link" href="https://www.linkedin.com/in/arnaldo10cisne/" target="_blank" rel="noopener noreferrer">Linkedin</a> | <a class="social_media__link" href="https://arnaldo10cisne.github.io/" target="_blank" rel="noopener noreferrer">Website</a></p>
+            <p><a class="social_media__link" href="https://www.instagram.com/arnaldo10cisne/" target="_blank" rel="noopener noreferrer">Instagram</a> | <a class="social_media__link" href="https://github.com/arnaldo10cisne" target="_blank" rel="noopener noreferrer">Github</a> | <a class="social_media__link" href="https://www.linkedin.com/in/arnaldo10cisne/" target="_blank" rel="noopener noreferrer">Linkedin</a> | <a class="social_media__link" href="https://arnaldo10cisne.github.io/" target="_blank" rel="noopener noreferrer">Website</a></p>
         </div>
         <div  class="copyright">
             <div class="copyright__line-1">
