@@ -87,10 +87,11 @@ body {
 }
 
 .app_description {
-    font-size: 0.8rem;
+    font-size: 1.2rem;
     text-align: justify;
     width: 95%;
     margin-left: 15px;
+    margin-top: 15px;
     padding-right: 15px;
     color: rgb(211, 211, 211);
     font-family: var(--text-font);
@@ -121,7 +122,7 @@ body {
 
 .add_product__label {
     width: 40%;
-    font-size: 1.2rem;
+    font-size: 1.4rem;
     text-align: left;
     margin-bottom: 10px;
     font-family: var(--text-font);
@@ -158,6 +159,51 @@ body {
     background-color: rgba(99, 99, 99, 0.212);
 }
 
+.actions > input {
+    margin: 5px 0px;
+}
+
+.currency_list {
+    background-color: rgba(99, 99, 99, 0.212);
+    border: none;
+    border-radius: 3px;
+    padding: 5px 10px;
+    caret-color: transparent;
+    color: rgb(211, 211, 211);
+    font-family: var(--text-font);
+    min-width: 180px;
+}
+
+.list_status {
+    display: flex;
+    justify-content: space-between;
+    width: 95%;
+
+    background-color: rgba(99, 99, 99, 0.212);
+}
+
+.list_status__total{
+    color: rgb(211, 211, 211);
+    font-family: var(--text-font);
+    font-size: 1.4rem;
+    margin-left: 20px;
+}
+
+.list_status__number{
+    color: rgb(211, 211, 211);
+    font-family: var(--text-font);
+    font-size: 1.4rem;
+    margin-right: 40px;
+}
+
+.list_status__total--span{
+    font-weight: 700;
+}
+
+.list_status__number--span{
+    font-weight: 700;
+}
+
 .product_list {
     display: flex;
     flex-direction: column;
@@ -167,6 +213,8 @@ body {
     padding: 0px 5px 5px 5px;
 
     background-color: rgba(99, 99, 99, 0.212);
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
 }
 
 .item_container {

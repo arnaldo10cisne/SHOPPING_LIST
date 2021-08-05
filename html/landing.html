@@ -17,28 +17,41 @@
 <body>
     <!-- HEADER SECTION -->
     <header class="header">
-        <h1 class="title">Shop listing app</h1>
-        <p class="app_description">Add new products usign the form below. You can edit and remove them later.<br>Change the currency of the pricing, and print the list when you're done to take it with you.</p>
+        <h1 class="title">Shopping list app</h1>
+        <p class="app_description">Add new products using the form below. You can edit and remove them later.<br>Change the currency of the pricing, and print of obtain the PDF of the list when you're done to take it with you.</p>
     </header>
 
     <!-- MAIN SECTION -->
     <main class="main">
         <!-- 'ADD A PRODUCT' SECTION -->
-        <section class="add_product">
+        <form class="add_product">
             <label class="add_product__label" for="itemName">Name of the item:</label>
-            <input class="add_product__input" type="text" id="itemName">
+            <input class="add_product__input" type="text" id="itemName" autocomplete="off">
             <label class="add_product__label" for="itemPrice">Price of the item:</label>
-            <input class="add_product__input" type="text" id="itemPrice">
+            <input class="add_product__input" type="text" id="itemPrice" autocomplete="off">
             <label class="add_product__label" for="itemQuantity">Number of items:</label>
-            <input class="add_product__input" type="number" id="itemQuantity">
+            <input class="add_product__input" type="number" id="itemQuantity" autocomplete="off">
             <input id="btnAddProduct" class="button button--add_product" type="button" value="Add item">
-        </section>
+        </form>
         
         <!-- 'ACTIONS' SECTION -->
         <section class="actions">
-            <input class="button actions__print" type="button" value="Print">
+            <input id="btnPrintList" class="button actions__print" type="button" value="Print / Get PDF">
             <input id="btnEmptyList" class="button actions__delete" type="button" value="Reset">
-            <input  class="button actions__delete" type="button" value="Change currency">
+            <input id="listCurrencies" class="currency_list" list="currencies" name="money" spellcheck="false">
+            <datalist id="currencies">
+                <option id="usd" value="U.S. Dollars ($)">
+                <option id="euro" value="Euro (€)">
+                <option id="sol" value="Peruvian sol (PEN)">
+                <option id="cpeso" value="Colombian peso (COP)">
+                <option id="mpeso" value="Mexican peso (MX$)">
+            </datalist>
+        </section>
+
+        <!-- LIST STATUS SECTION -->
+        <section class="list_status">
+            <label class="list_status__total">Total: <br><span class="list_status__total--span" id="spanTotal">$0.00</span></label>
+            <label class="list_status__number">Number of items: <br><span class="list_status__number--span" id="spanNumber">0 items</span></label>
         </section>
 
         <!-- 'LIST' SECTION -->

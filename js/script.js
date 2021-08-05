@@ -1,15 +1,27 @@
 const btnAddProduct = document.getElementById('btnAddProduct')
 const btnEmptyList = document.getElementById('btnEmptyList')
+const btnPrintList = document.getElementById('btnPrintList')
+const listCurrencies = document.getElementById('listCurrencies')
 const listOfItems = document.getElementById('listOfItems')
 const inputItemName = document.getElementById('itemName')
 const inputItemPrice = document.getElementById('itemPrice')
 const inputItemQuantity = document.getElementById('itemQuantity')
+const spanTotal = document.getElementById('spanTotal')
+const spanNumber = document.getElementById('spanNumber')
+const coinUSD = document.getElementById('usd')
 
 let arrayOfItems = []
 let arrayModifyBtn = []
 let arrayEraseBtn = []
 let newItem = undefined
 let currentHTMLList = ""
+let locale = 'en-US'
+let currency = 'USD'
+let priceNoFormat = undefined
+
+addEventListener("load", ()=> {
+    listCurrencies.value=document.getElementById('usd').value
+})
 
 class Item {
     constructor (id, itemName, quantity, unitPrice) {
@@ -78,6 +90,13 @@ const removeFromArray = (array, index) => {
     return newArray
 }
 
+const calculateTotalOfList = () => {
+    let total = arrayOfItems.reduce((total, element) => total + Number(element.getTotal()), 0)
+    let number = arrayOfItems.reduce((total, element) => total + Number(element.getQuantity()), 0)
+    spanTotal.innerHTML = new Intl.NumberFormat(locale, { style: 'currency', currency: currency }).format(total)
+    spanNumber.innerHTML = `${number} items`
+}
+
 const reasignIds = () => {
     for (let i=0; i<=arrayOfItems.length-1; i++) {
         arrayOfItems[i].setId(i)
@@ -86,9 +105,30 @@ const reasignIds = () => {
 
 const modifyItem = function() {
     let id = this.id[this.id.length-1]
-    arrayOfItems[id].setName(prompt('Confirm name of item: '))
-    arrayOfItems[id].setPrice(prompt('Confirm price of item: '))
-    arrayOfItems[id].setQuantity(prompt('Confirm quantity of items: '))
+    
+    let aux = prompt('Confirm name of item: ')
+    if (aux != '' && aux != null) {
+        arrayOfItems[id].setName(aux)
+    }
+    
+    aux = prompt('Confirm price of item: ')
+    if (aux != '' && aux != null) {
+        if (isNaN(aux)) {
+            alert('Invalid entry')
+        } else {
+            arrayOfItems[id].setPrice(aux)
+        }
+    }
+
+    aux = prompt('Confirm quantity of items: ')
+    if (aux != '' && aux != null) {
+        if (isNaN(aux)) {
+            alert('Invalid entry')
+        } else {
+            arrayOfItems[id].setQuantity(aux)
+        }
+    }
+
     arrayOfItems[id].setTotal()
 
     arrayModifyBtn = []
@@ -99,6 +139,7 @@ const modifyItem = function() {
     for (let i=0;i<=arrayOfItems.length-1;i++){
         addItemToHTMLList(arrayOfItems[i])
     }
+    calculateTotalOfList()
 }
 
 const eraseItem = function() {
@@ -117,6 +158,7 @@ const eraseItem = function() {
     for (let i=0;i<=arrayOfItems.length-1;i++){
         addItemToHTMLList(arrayOfItems[i])
     }
+    calculateTotalOfList()
 }
 
 const addItemToHTMLList = (element) => {
@@ -134,7 +176,7 @@ const addItemToHTMLList = (element) => {
 
     let newLIPrice = document.createElement('li')
     newLIPrice.setAttribute("class", "item_description__li")
-    newLIPrice.innerHTML = `${element.getPrice()} each`
+    newLIPrice.innerHTML = `${new Intl.NumberFormat(locale, { style: 'currency', currency: currency }).format(element.getPrice())} each`
 
     let newLIQuantity = document.createElement('li')
     newLIQuantity.setAttribute("class", "item_description__li")
@@ -146,7 +188,7 @@ const addItemToHTMLList = (element) => {
 
     let newLITotal = document.createElement('li')
     newLITotal.setAttribute("class", "item_description__li")
-    newLITotal.innerHTML = `Total: ${element.getTotal()}`
+    newLITotal.innerHTML = `Total: ${new Intl.NumberFormat(locale, { style: 'currency', currency: currency }).format(element.getTotal())}`
 
     let newModifyBtn = document.createElement('input')
     newModifyBtn.setAttribute("id", `btnModifyId${element.getId()}`)
@@ -192,23 +234,16 @@ const clearInputs = () => {
 }
 
 const addProduct = () => {
-    newItem = new Item(arrayOfItems.length, inputItemName.value, inputItemQuantity.value, inputItemPrice.value)
+    if (inputItemName.value != ""  && inputItemPrice.value != "" && inputItemQuantity.value != "" && priceNoFormat > 0) {
+        newItem = new Item(arrayOfItems.length, inputItemName.value, inputItemQuantity.value, priceNoFormat)
     
-    arrayOfItems.push(newItem)
-    
-    addItemToHTMLList(arrayOfItems[arrayOfItems.length-1])
-    
-    // arrayModifyBtn[arrayOfItems[arrayOfItems.length-1].getId()].addEventListener("click", function() {
-    //     // console.log(this)
-    //     console.log("Modify element: "+ this.id)
-    // })
-
-    // arrayEraseBtn[arrayOfItems[arrayOfItems.length-1].getId()].addEventListener("click", function() {
-    //     // console.log(this)
-    //     console.log("Erase element: "+ this.id)
-    // })
-
-    clearInputs()
+        arrayOfItems.push(newItem)
+        clearInputs()
+        addItemToHTMLList(arrayOfItems[arrayOfItems.length-1])
+        calculateTotalOfList()
+    } else {
+        alert('Information given was not valid')
+    }
 }
 
 btnAddProduct.addEventListener("click", addProduct)
@@ -218,4 +253,75 @@ btnEmptyList.addEventListener("click", () => {
     arrayOfItems = []
     arrayModifyBtn = []
     arrayEraseBtn = []
+    calculateTotalOfList()
+})
+
+btnPrintList.addEventListener("click", ()=>{
+    window.print()
+})
+
+listCurrencies.addEventListener("mousedown", ()=>{
+    listCurrencies.value=""
+})
+
+listCurrencies.addEventListener("change", ()=>{
+    if (listCurrencies.value == document.getElementById('usd').value) {
+        locale = 'en-US'
+        currency = 'USD'
+        inputItemPrice.value = ""
+    } else if (listCurrencies.value == document.getElementById('euro').value) {
+        locale = 'en-US'
+        currency = 'EUR'
+        inputItemPrice.value = ""
+    } else if (listCurrencies.value == document.getElementById('sol').value) {
+        locale = 'en-US'
+        currency = 'PEN'
+        inputItemPrice.value = ""
+    } else if (listCurrencies.value == document.getElementById('cpeso').value) {
+        locale = 'en-US'
+        currency = 'COP'
+        inputItemPrice.value = ""
+    } else if (listCurrencies.value == document.getElementById('mpeso').value) {
+        locale = 'en-US'
+        currency = 'MXN'
+        inputItemPrice.value = ""
+    } else {
+        
+    }
+    arrayModifyBtn = []
+    arrayEraseBtn = []
+    listOfItems.innerHTML = ""
+    for (let i=0;i<=arrayOfItems.length-1;i++){
+        addItemToHTMLList(arrayOfItems[i])
+    }
+    calculateTotalOfList()
+})
+
+listCurrencies.addEventListener("focusout", ()=>{
+    if (listCurrencies.value == "") {
+        listCurrencies.value = document.getElementById('usd').value
+        locale = 'en-US'
+        currency = 'USD'
+        arrayModifyBtn = []
+        arrayEraseBtn = []
+        listOfItems.innerHTML = ""
+        for (let i=0;i<=arrayOfItems.length-1;i++){
+            addItemToHTMLList(arrayOfItems[i])
+        }
+        calculateTotalOfList()
+    }
+})
+
+inputItemPrice.addEventListener("focusout" , ()=>{
+    if (isNaN(inputItemPrice.value)){
+        inputItemPrice.value=""
+        priceNoFormat=0
+    } else {
+        priceNoFormat = inputItemPrice.value
+        inputItemPrice.value=new Intl.NumberFormat(locale, { style: 'currency', currency: currency }).format(priceNoFormat)
+    }
+})
+
+inputItemPrice.addEventListener("mousedown" , ()=>{
+    inputItemPrice.value=""
 })
