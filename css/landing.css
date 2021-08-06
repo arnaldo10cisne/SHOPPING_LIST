@@ -300,3 +300,109 @@ footer {
 .social_media__link:hover {
     text-decoration: underline;
 }
+
+
+/******************************************************/
+/* MEDIA QUERIES */
+/******************************************************/
+
+
+/* TABLET */
+@media (min-width: 760px) {
+    body {
+        background-image: url('https://i.pinimg.com/originals/5f/fa/d2/5ffad2de424197e7894a3bcc54ed5587.jpg');
+        backdrop-filter: opacity(0.7) blur(10px) grayscale(100%);
+        background-color: var(--foreground-blue);
+    }
+    .title{
+        font-size: 3rem;
+    }
+    .header {
+        width: 73%;
+        border-left: black solid 3px;
+        border-right: black solid 3px;
+    }
+    .main {
+        background-color: var(--background-blue);
+        width: 73%;
+        padding-bottom: 20px;
+        border-left: black solid 3px;
+        border-right: black solid 3px;
+
+    }
+    .footer {
+        margin-top: 0px;
+        width: 73%;
+        border-left: black solid 3px;
+        border-right: black solid 3px;
+    }
+    .add_product__label {
+        text-align: center;
+    }
+    .add_product__input {
+        width: 50%;
+    }
+    .item_description__li {
+        font-size: 1.3rem;
+    }
+    .button {
+        font-size: 1.6rem;
+    }
+    .button--small {
+        font-size: 1.4rem;
+    }
+}
+
+/* DESKTOP */
+@media (min-width: 1024px) {
+    .title{
+        font-size: 4rem;
+    }
+    .header {
+        width: 65%;
+    }
+    .main {
+        width: 65%;
+
+    }
+    .footer {
+        width: 65%;
+    }
+    .list_status {
+        padding: 15px 15px 0px 15px;
+    }
+    .product_list {
+        padding-top: 20px;
+    }
+}
+
+/* BIG DESKTOP */
+@media (min-width: 1360px) {
+    .title{
+        font-size: 5rem;
+    }
+    .app_description {
+        font-size: 1.8rem;
+    }
+    .header {
+        width: 65%;
+    }
+    .main {
+        width: 65%;
+    }
+    .footer {
+        width: 65%;
+    }
+    .list_status {
+        padding: 15px 100px 0px 100px;
+    }
+    .add_product__label {
+        font-size: 1.8rem;
+    }
+    .add_product__input {
+        margin-right: 50px;
+    }
+    .item_description__li {
+        font-size: 1.6rem;
+    }
+}
