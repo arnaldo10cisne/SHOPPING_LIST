@@ -234,7 +234,7 @@ const clearInputs = () => {
 }
 
 const addProduct = () => {
-    if (inputItemName.value != ""  && inputItemPrice.value != "" && inputItemQuantity.value != "" && priceNoFormat > 0) {
+    if (inputItemName.value != ""  && inputItemPrice.value != "" && inputItemQuantity.value != "" && priceNoFormat > 0 && inputItemQuantity.value > 0) {
         newItem = new Item(arrayOfItems.length, inputItemName.value, inputItemQuantity.value, priceNoFormat)
     
         arrayOfItems.push(newItem)
